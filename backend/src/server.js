@@ -27,7 +27,9 @@ app.use(errorHandler);
 
 
 const PORT = process.env.PORT || 5000;
-
+app.get("/", (req, res) => {
+  res.send("SkillSwap Backend is Live 🚀");
+});
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
