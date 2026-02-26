@@ -7,7 +7,8 @@ const {
   addSkill,
   getAllSkills,
   addWantedSkill,
-  getSkillsByCategory
+  getSkillsByCategory,
+  getMySkills
 } = require("../controllers/skillController");
 
 router.post("/add", verifyToken, addSkill);
