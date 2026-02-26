@@ -42,8 +42,7 @@ exports.findMatches = async (req, res,next) => {
             if (userWanted.userId === userHave.userId) {
               matches.push({
                 user: userHave.user,
-                mySkill: skill.title,
-                theirSkill: wanted.title
+                skill: userHave
               });
             }
           });
