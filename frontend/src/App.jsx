@@ -7,6 +7,7 @@ import Skills from "./pages/Skills";
 import AddSkill from "./pages/AddSkill";
 import Matches from "./pages/Matches";
 import Requests from "./pages/Requests";
+import Chat from "./pages/Chat";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
@@ -83,6 +84,17 @@ function App() {
                 </Layout>
             </ProtectedRoute>
             } 
+        />
+
+        <Route
+          path="/chat/:requestId"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Chat />
+              </Layout>
+            </ProtectedRoute>
+          }
         />
       </Routes>
     </BrowserRouter>

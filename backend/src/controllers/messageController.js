@@ -20,6 +20,9 @@ exports.sendMessage = async (req, res,next) => {
     ) {
       return res.status(403).json({ message: "Not authorized" });
     }
+    if (request.status !== "accepted") {
+      return res.status(403).json({ message: "Chat not available yet" });
+    }
 
     const message = await prisma.message.create({
       data: {
@@ -58,6 +61,9 @@ exports.getMessages = async (req, res,next) => {
       request.skill.userId !== req.userId
     ) {
       return res.status(403).json({ message: "Not authorized" });
+    }
+    if (request.status !== "accepted") {
+    return res.status(403).json({ message: "Chat not available yet" });
     }
 
     const messages = await prisma.message.findMany({
