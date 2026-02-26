@@ -133,3 +133,16 @@ exports.getMySkills = async (req, res, next) => {
     next(error);
   }
 };
+exports.getMyWantedSkills = async (req, res, next) => {
+  try {
+    const wanted = await prisma.wantedSkill.findMany({
+      where: {
+        userId: req.userId
+      }
+    });
+
+    res.json(wanted);
+  } catch (error) {
+    next(error);
+  }
+};
