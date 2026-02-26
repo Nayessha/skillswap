@@ -6,6 +6,16 @@ export default function Chat() {
   const { requestId } = useParams();
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
+  const [currentUserId, setCurrentUserId] = useState(null);
+
+  // 🔥 Decode JWT to get userId
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      setCurrentUserId(payload.id);
+    }
+  }, []);
 
   const loadMessages = async () => {
     try {
@@ -42,12 +52,29 @@ export default function Chat() {
       <h2 className="text-2xl font-bold mb-4">Chat</h2>
 
       <div className="bg-white p-4 rounded shadow h-64 overflow-y-auto mb-4">
-        {messages.map(msg => (
-          <div key={msg.id} className="mb-2">
-            <strong>{msg.sender?.name || "User"}: </strong>
-            {msg.content}
-          </div>
-        ))}
+        {messages.map(msg => {
+          const isMe = msg.senderId === currentUserId;
+
+          return (
+            <div
+              key={msg.id}
+              className={`mb-2 flex ${isMe ? "justify-end" : "justify-start"}`}
+            >
+              <div
+                className={`p-2 rounded max-w-xs ${
+                  isMe
+                    ? "bg-indigo-600 text-white"
+                    : "bg-gray-200 text-black"
+                }`}
+              >
+                <strong>
+                  {isMe ? "You" : msg.sender?.name}
+                </strong>
+                <div>{msg.content}</div>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       <div className="flex">

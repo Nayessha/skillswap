@@ -1,26 +1,11 @@
 const prisma = require("../prismaClient");
 
-exports.rateUser = async (req, res,next) => {
+exports.addRating = async (req, res, next) => {
   try {
     const { userId, value } = req.body;
 
     if (value < 1 || value > 5) {
-      return res.status(400).json({ message: "Rating must be between 1 and 5" });
-    }
-
-    if (userId === req.userId) {
-      return res.status(400).json({ message: "You cannot rate yourself" });
-    }
-
-    const existing = await prisma.rating.findFirst({
-      where: {
-        reviewerId: req.userId,
-        userId
-      }
-    });
-
-    if (existing) {
-      return res.status(400).json({ message: "Already rated this user" });
+      return res.status(400).json({ message: "Rating must be 1 to 5" });
     }
 
     const rating = await prisma.rating.create({
