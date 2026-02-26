@@ -68,6 +68,7 @@ exports.getMessages = async (req, res,next) => {
 
     const messages = await prisma.message.findMany({
       where: { requestId },
+      include: { sender: true },
       orderBy: { createdAt: "asc" }
     });
 
