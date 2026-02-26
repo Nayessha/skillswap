@@ -43,7 +43,7 @@ exports.sendMessage = async (req, res,next) => {
   }
 };
 
-exports.getMessages = async (req, res,next) => {
+exports.getMessages = async (req, res, next) => {
   try {
     const requestId = parseInt(req.params.requestId);
 
@@ -62,13 +62,17 @@ exports.getMessages = async (req, res,next) => {
     ) {
       return res.status(403).json({ message: "Not authorized" });
     }
-    if (request.status !== "accepted") {
-    return res.status(403).json({ message: "Chat not available yet" });
-    }
 
     const messages = await prisma.message.findMany({
       where: { requestId },
-      include: { sender: true },
+      include: {
+        sender: {
+          select: {
+            id: true,
+            name: true
+          }
+        }
+      },
       orderBy: { createdAt: "asc" }
     });
 

@@ -44,7 +44,7 @@ export default function Chat() {
       <div className="bg-white p-4 rounded shadow h-64 overflow-y-auto mb-4">
         {messages.map(msg => (
           <div key={msg.id} className="mb-2">
-            <strong>{msg.senderId}: </strong>
+            <strong>{msg.sender?.name || "User"}: </strong>
             {msg.content}
           </div>
         ))}
