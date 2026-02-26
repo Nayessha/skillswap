@@ -17,7 +17,10 @@ exports.findMatches = async (req, res,next) => {
 
         const usersWhoWantMySkill = await prisma.wantedSkill.findMany({
           where: {
-            title: skill.title,
+            title: {
+              equals: skill.title,
+              mode: "insensitive"
+            },
             userId: { not: req.userId }
           },
           include: { user: true }
@@ -25,7 +28,10 @@ exports.findMatches = async (req, res,next) => {
 
         const usersWhoHaveWhatIWant = await prisma.skill.findMany({
           where: {
-            title: wanted.title,
+            title: {
+              equals: wanted.title,
+              mode: "insensitive"
+            },
             userId: { not: req.userId }
           },
           include: { user: true }
@@ -34,13 +40,18 @@ exports.findMatches = async (req, res,next) => {
         usersWhoWantMySkill.forEach(userWanted => {
           usersWhoHaveWhatIWant.forEach(userHave => {
             if (userWanted.userId === userHave.userId) {
-              matches.push(userHave.user);
+              matches.push({
+                user: userHave.user,
+                mySkill: skill.title,
+                theirSkill: wanted.title
+              });
             }
           });
         });
       }
     }
 
+    console.log(matches);
     res.json(matches);
 
   } catch (error) {

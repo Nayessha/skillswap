@@ -7,16 +7,23 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await api.post("/auth/login", { email, password });
-      localStorage.setItem("token", res.data.token);
-      navigate("/dashboard");
-    } catch (err) {
-      alert("Invalid credentials");
-    }
-  };
+ const handleLogin = async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await api.post("/auth/login", { email, password });
+
+    // Save token properly
+    localStorage.setItem("token", res.data.token);
+
+    // Go to dashboard
+    navigate("/dashboard");
+
+  } catch (err) {
+    console.log(err);
+    alert("Login failed");
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center">

@@ -13,6 +13,7 @@ export default function Layout({ children }) {
           <Link to="/add-skill" className="hover:text-gray-200">Add Skill</Link>
           <Link to="/matches" className="hover:text-gray-200">Matches</Link>
           <Link to="/requests" className="hover:text-gray-200">Requests</Link>
+          <Link to="/add-wanted" className="hover:text-gray-200">Add Wanted Skill</Link>
         </nav>
       </div>
 

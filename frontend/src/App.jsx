@@ -10,6 +10,7 @@ import Requests from "./pages/Requests";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
+import AddWantedSkill from "./pages/AddWantedSkill";
 
 function App() {
   return (
@@ -71,6 +72,17 @@ function App() {
               </Layout>
             </ProtectedRoute>
           }
+        />
+
+        <Route
+           path="/add-wanted" 
+           element={
+              <ProtectedRoute>
+                <Layout>
+                  <AddWantedSkill />
+                </Layout>
+            </ProtectedRoute>
+            } 
         />
       </Routes>
     </BrowserRouter>
