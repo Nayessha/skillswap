@@ -119,3 +119,17 @@ exports.getSkillsByCategory = async (req, res,next) => {
     next(error);
   }
 };
+exports.getMySkills = async (req, res, next) => {
+  try {
+    const skills = await prisma.skill.findMany({
+      where: {
+        userId: req.userId,   // ⚠️ IMPORTANT FIX HERE
+      },
+    });
+
+    res.json(skills);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+};
