@@ -24,10 +24,7 @@ export default function Requests() {
 
   const updateStatus = async (requestId, status) => {
     try {
-      await api.post("/requests/update-status", {
-        requestId,
-        status
-      });
+      await api.post("/requests/update-status", { requestId, status });
       loadRequests();
     } catch (err) {
       console.log(err);
@@ -47,123 +44,166 @@ export default function Requests() {
 
   const submitRating = async (userId, value) => {
     try {
-      await api.post("/ratings/add", {
-        userId,
-        value
-      });
-      alert("Rating submitted");
+      await api.post("/ratings/add", { userId, value });
+      alert("Rating submitted ⭐");
     } catch (err) {
       console.log(err);
       alert("Error submitting rating");
     }
   };
 
+  const statusColor = (status) => {
+    switch (status) {
+      case "accepted":
+        return "bg-green-100 text-green-700";
+      case "rejected":
+        return "bg-red-100 text-red-700";
+      case "completed":
+        return "bg-blue-100 text-blue-700";
+      default:
+        return "bg-yellow-100 text-yellow-700";
+    }
+  };
+
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Requests</h2>
+    <div className="p-10 bg-gray-100 min-h-screen">
+      <h2 className="text-3xl font-bold mb-8 text-gray-800">
+        Requests
+      </h2>
 
       {/* SENT REQUESTS */}
-      <h3 className="text-lg font-semibold mt-6">Requests I Sent</h3>
-      {myRequests.map(req => (
-        <div key={req.id} className="bg-white p-4 rounded shadow mb-3">
-          <p><strong>Skill:</strong> {req.skill?.title}</p>
-          <p><strong>Status:</strong> {req.status}</p>
+      <div className="mb-10">
+        <h3 className="text-xl font-semibold mb-4 text-gray-700">
+          Requests I Sent
+        </h3>
 
-          {req.status === "accepted" && (
-            <>
-              <button
-                onClick={() => navigate(`/chat/${req.id}`)}
-                className="bg-indigo-600 text-white px-3 py-1 rounded mt-2 mr-2"
-              >
-                Chat
-              </button>
+        {myRequests.map(req => (
+          <div
+            key={req.id}
+            className="bg-white p-6 rounded-xl shadow-md mb-4 hover:shadow-xl transition"
+          >
+            <p className="text-lg font-medium text-gray-800">
+              {req.skill?.title}
+            </p>
 
-              <button
-                onClick={() => completeRequest(req.id)}
-                className="bg-yellow-500 text-white px-3 py-1 rounded mt-2"
-              >
-                Mark Completed
-              </button>
-            </>
-          )}
+            <span className={`inline-block px-3 py-1 rounded-full text-sm mt-2 ${statusColor(req.status)}`}>
+              {req.status}
+            </span>
 
-          {req.status === "completed" && (
-            <div className="mt-3">
-              <p className="mb-1 font-medium">Rate this user:</p>
-              {[1,2,3,4,5].map(num => (
-                <button
-                  key={num}
-                  onClick={() => submitRating(req.skill?.userId, num)}
-                  className="bg-yellow-400 px-3 py-1 mr-2 rounded"
-                >
-                  {num}
-                </button>
-              ))}
+            <div className="mt-4 flex gap-3 flex-wrap">
+              {req.status === "accepted" && (
+                <>
+                  <button
+                    onClick={() => navigate(`/chat/${req.id}`)}
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition"
+                  >
+                    Chat
+                  </button>
+
+                  <button
+                    onClick={() => completeRequest(req.id)}
+                    className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg transition"
+                  >
+                    Mark Completed
+                  </button>
+                </>
+              )}
+
+              {req.status === "completed" && (
+                <div className="flex gap-2 mt-2">
+                  {[1,2,3,4,5].map(num => (
+                    <button
+                      key={num}
+                      onClick={() => submitRating(req.skill?.userId, num)}
+                      className="text-2xl hover:scale-110 transition"
+                    >
+                      ⭐
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
-        </div>
-      ))}
+          </div>
+        ))}
+      </div>
 
       {/* RECEIVED REQUESTS */}
-      <h3 className="text-lg font-semibold mt-8">Requests For Me</h3>
-      {forMe.map(req => (
-        <div key={req.id} className="bg-white p-4 rounded shadow mb-3">
-          <p><strong>From:</strong> {req.requester?.name}</p>
-          <p><strong>Skill:</strong> {req.skill?.title}</p>
-          <p><strong>Status:</strong> {req.status}</p>
+      <div>
+        <h3 className="text-xl font-semibold mb-4 text-gray-700">
+          Requests For Me
+        </h3>
 
-          {req.status === "pending" && (
-            <>
-              <button
-                onClick={() => updateStatus(req.id, "accepted")}
-                className="bg-green-500 text-white px-3 py-1 mr-2 rounded mt-2"
-              >
-                Accept
-              </button>
+        {forMe.map(req => (
+          <div
+            key={req.id}
+            className="bg-white p-6 rounded-xl shadow-md mb-4 hover:shadow-xl transition"
+          >
+            <p className="text-lg font-medium text-gray-800">
+              From: {req.requester?.name}
+            </p>
 
-              <button
-                onClick={() => updateStatus(req.id, "rejected")}
-                className="bg-red-500 text-white px-3 py-1 rounded mt-2"
-              >
-                Reject
-              </button>
-            </>
-          )}
+            <p className="text-gray-600 mt-1">
+              Skill: {req.skill?.title}
+            </p>
 
-          {req.status === "accepted" && (
-            <>
-              <button
-                onClick={() => navigate(`/chat/${req.id}`)}
-                className="bg-indigo-600 text-white px-3 py-1 rounded mt-2 mr-2"
-              >
-                Chat
-              </button>
+            <span className={`inline-block px-3 py-1 rounded-full text-sm mt-2 ${statusColor(req.status)}`}>
+              {req.status}
+            </span>
 
-              <button
-                onClick={() => completeRequest(req.id)}
-                className="bg-yellow-500 text-white px-3 py-1 rounded mt-2"
-              >
-                Mark Completed
-              </button>
-            </>
-          )}
+            <div className="mt-4 flex gap-3 flex-wrap">
+              {req.status === "pending" && (
+                <>
+                  <button
+                    onClick={() => updateStatus(req.id, "accepted")}
+                    className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition"
+                  >
+                    Accept
+                  </button>
 
-          {req.status === "completed" && (
-            <div className="mt-3">
-              <p className="mb-1 font-medium">Rate requester:</p>
-              {[1,2,3,4,5].map(num => (
-                <button
-                  key={num}
-                  onClick={() => submitRating(req.requester?.id, num)}
-                  className="bg-yellow-400 px-3 py-1 mr-2 rounded"
-                >
-                  {num}
-                </button>
-              ))}
+                  <button
+                    onClick={() => updateStatus(req.id, "rejected")}
+                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition"
+                  >
+                    Reject
+                  </button>
+                </>
+              )}
+
+              {req.status === "accepted" && (
+                <>
+                  <button
+                    onClick={() => navigate(`/chat/${req.id}`)}
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition"
+                  >
+                    Chat
+                  </button>
+
+                  <button
+                    onClick={() => completeRequest(req.id)}
+                    className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg transition"
+                  >
+                    Mark Completed
+                  </button>
+                </>
+              )}
+
+              {req.status === "completed" && (
+                <div className="flex gap-2 mt-2">
+                  {[1,2,3,4,5].map(num => (
+                    <button
+                      key={num}
+                      onClick={() => submitRating(req.requester?.id, num)}
+                      className="text-2xl hover:scale-110 transition"
+                    >
+                      ⭐
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
-        </div>
-      ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -2,20 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api } from "../api";
 
-export default function Chat() {
+function Chat() {
   const { requestId } = useParams();
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
-  const [currentUserId, setCurrentUserId] = useState(null);
-
-  // 🔥 Decode JWT to get userId
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const payload = JSON.parse(atob(token.split(".")[1]));
-      setCurrentUserId(payload.id);
-    }
-  }, []);
 
   const loadMessages = async () => {
     try {
@@ -38,7 +28,6 @@ export default function Chat() {
         requestId: Number(requestId),
         content: text
       });
-
       setText("");
       loadMessages();
     } catch (err) {
@@ -48,45 +37,27 @@ export default function Chat() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-10 bg-gray-100 min-h-screen">
       <h2 className="text-2xl font-bold mb-4">Chat</h2>
 
-      <div className="bg-white p-4 rounded shadow h-64 overflow-y-auto mb-4">
-        {messages.map(msg => {
-          const isMe = msg.senderId === currentUserId;
-
-          return (
-            <div
-              key={msg.id}
-              className={`mb-2 flex ${isMe ? "justify-end" : "justify-start"}`}
-            >
-              <div
-                className={`p-2 rounded max-w-xs ${
-                  isMe
-                    ? "bg-indigo-600 text-white"
-                    : "bg-gray-200 text-black"
-                }`}
-              >
-                <strong>
-                  {isMe ? "You" : msg.sender?.name}
-                </strong>
-                <div>{msg.content}</div>
-              </div>
-            </div>
-          );
-        })}
+      <div className="bg-white p-4 rounded-xl shadow h-80 overflow-y-auto mb-4">
+        {messages.map(msg => (
+          <div key={msg.id} className="mb-2">
+            {msg.content}
+          </div>
+        ))}
       </div>
 
-      <div className="flex">
+      <div className="flex gap-2">
         <input
           value={text}
-          onChange={e => setText(e.target.value)}
-          className="border p-2 flex-1"
+          onChange={(e) => setText(e.target.value)}
+          className="border p-2 flex-1 rounded"
           placeholder="Type a message..."
         />
         <button
           onClick={sendMessage}
-          className="bg-indigo-600 text-white px-4 ml-2"
+          className="bg-indigo-600 text-white px-4 rounded"
         >
           Send
         </button>
@@ -94,3 +65,5 @@ export default function Chat() {
     </div>
   );
 }
+
+export default Chat;
