@@ -1,6 +1,6 @@
 <div className="w-64 bg-gradient-to-b from-indigo-700 to-purple-700 text-white min-h-screen p-6 shadow-xl">
   <h1 className="text-3xl font-extrabold mb-8 tracking-wide">
-    SkillSwap
+    Synaptex
   </h1>
 
   <nav className="flex flex-col space-y-3 text-lg">
