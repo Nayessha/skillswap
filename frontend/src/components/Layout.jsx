@@ -14,6 +14,7 @@ export default function Layout({ children }) {
           <Link to="/matches" className="hover:text-gray-200">Matches</Link>
           <Link to="/requests" className="hover:text-gray-200">Requests</Link>
           <Link to="/add-wanted" className="hover:text-gray-200">Add Wanted Skill</Link>
+          <Link to="/search" className="hover:text-gray-200">Find Teachers</Link>
         </nav>
       </div>
 

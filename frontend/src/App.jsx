@@ -8,6 +8,7 @@ import AddSkill from "./pages/AddSkill";
 import Matches from "./pages/Matches";
 import Requests from "./pages/Requests";
 import Chat from "./pages/Chat";
+import Search from "./pages/Search";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
@@ -92,6 +93,16 @@ function App() {
             <ProtectedRoute>
               <Layout>
                 <Chat />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Search />
               </Layout>
             </ProtectedRoute>
           }

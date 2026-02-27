@@ -15,6 +15,8 @@ const {
 router.post("/add", verifyToken, addSkill);
 router.get("/", getAllSkills);
 router.post("/wanted", verifyToken, addWantedSkill);
+router.get("/recommend", verifyToken, getRecommendedTeachers);
+
 router.get("/by-category", getSkillsByCategory);
 router.get("/my", verifyToken, getMySkills);
 router.get("/wanted", verifyToken, getMyWantedSkills);
