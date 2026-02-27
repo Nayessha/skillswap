@@ -16,7 +16,7 @@ export default function Layout({ children }) {
       <div className="w-64 bg-gradient-to-b from-indigo-700 to-indigo-900 text-white p-6 flex flex-col">
 
         <div>
-          <h1 className="text-3xl font-bold mb-8">SkillSwap</h1>
+          <h1 className="text-3xl font-bold mb-8">Synaptex</h1>
 
           <nav className="flex flex-col space-y-4 text-lg">
             <Link to="/dashboard">Dashboard</Link>
