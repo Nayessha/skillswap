@@ -146,3 +146,52 @@ exports.getMyWantedSkills = async (req, res, next) => {
     next(error);
   }
 };
+exports.getRecommendedTeachers = async (req, res, next) => {
+  try {
+    const { title, category } = req.query;
+
+    const teachers = await prisma.skill.findMany({
+      where: {
+        title: {
+          equals: title,
+          mode: "insensitive"
+        },
+        category: {
+          equals: category,
+          mode: "insensitive"
+        }
+      },
+      include: {
+        user: {
+          include: {
+            ratingsReceived: true
+          }
+        }
+      }
+    });
+
+    const formatted = teachers.map(skill => {
+      const ratings = skill.user.ratingsReceived;
+      const avgRating =
+        ratings.length > 0
+          ? ratings.reduce((sum, r) => sum + r.value, 0) / ratings.length
+          : 0;
+
+      return {
+        skillId: skill.id,
+        teacherId: skill.user.id,
+        teacherName: skill.user.name,
+        averageRating: avgRating
+      };
+    });
+
+    // Sort by rating descending
+    formatted.sort((a, b) => b.averageRating - a.averageRating);
+
+    res.json(formatted);
+
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+};
