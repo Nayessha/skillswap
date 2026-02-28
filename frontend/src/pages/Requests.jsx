@@ -214,7 +214,7 @@ function Requests() {
         ))}
       </div>
       <button
-        onClick={handleAdd}
+        
         className="btn-primary w-full"
       >
         Requests

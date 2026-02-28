@@ -32,7 +32,7 @@ function Matches() {
               <p><strong>Skill:</strong> {match.skill?.title}</p>
 
             <button
-                onClick={handleAdd}
+                
                 className="btn-primary w-full"
             >
                 Matches

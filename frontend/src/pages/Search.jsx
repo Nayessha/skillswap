@@ -69,7 +69,7 @@ function Search() {
         </div>
       ))}
         <button
-            onClick={handleAdd}
+            
             className="btn-primary w-full"
         >
             Find Teachers
