@@ -48,6 +48,9 @@ function Matches() {
               >
                 Send Request
               </button>
+              <button className="btn-primary">
+                Matches
+              </button>
             </div>
           ))}
         </div>

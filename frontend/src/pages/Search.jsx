@@ -68,6 +68,9 @@ function Search() {
           </p>
         </div>
       ))}
+      <button className="btn-primary">
+        Search
+      </button>
     </div>
     </motion.div>
   );

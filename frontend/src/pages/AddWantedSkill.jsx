@@ -97,6 +97,9 @@ export default function AddWantedSkill() {
           >
             Add Wanted Skill
           </button>
+          <button className="btn-primary">
+            Add Skill
+          </button>
 
         </div>
       </div>

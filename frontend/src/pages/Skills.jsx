@@ -29,6 +29,9 @@ function Skills() {
           </div>
         ))}
       </div>
+      <button className="btn-primary">
+        Skills
+      </button>
     </div>
     </motion.div>
   );
