@@ -87,9 +87,11 @@ export default function AddSkill() {
             </select>
           </div>
 
-          
-          <button className="btn-primary">
-                Add Skill
+          <button
+            onClick={handleAdd}
+            className="btn-primary w-full"
+            >
+            Add Skill
           </button>
 
         </div>

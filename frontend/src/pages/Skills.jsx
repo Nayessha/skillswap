@@ -29,7 +29,10 @@ function Skills() {
           </div>
         ))}
       </div>
-      <button className="btn-primary">
+      <button
+        onClick={handleAdd}
+        className="btn-primary w-full"
+      >
         Skills
       </button>
     </div>

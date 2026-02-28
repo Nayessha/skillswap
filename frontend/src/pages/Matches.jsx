@@ -31,26 +31,12 @@ function Matches() {
               <p><strong>User:</strong> {match.user?.name}</p>
               <p><strong>Skill:</strong> {match.skill?.title}</p>
 
-              <button
-                onClick={() => {
-                  if (!match.skill?.id) return;
-
-                  api.post("/requests/send", {
-                    skillId: match.skill.id
-                  })
-                  .then(() => alert("Request sent!"))
-                  .catch(err => {
-                    console.log(err);
-                    alert("Error sending request");
-                  });
-                }}
-                className="bg-indigo-600 text-white px-3 py-1 rounded mt-2"
-              >
-                Send Request
-              </button>
-              <button className="btn-primary">
+            <button
+                onClick={handleAdd}
+                className="btn-primary w-full"
+            >
                 Matches
-              </button>
+            </button>
             </div>
           ))}
         </div>

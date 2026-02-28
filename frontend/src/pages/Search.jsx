@@ -68,9 +68,12 @@ function Search() {
           </p>
         </div>
       ))}
-      <button className="btn-primary">
-        Search
-      </button>
+        <button
+            onClick={handleAdd}
+            className="btn-primary w-full"
+        >
+            Find Teachers
+        </button>
     </div>
     </motion.div>
   );
