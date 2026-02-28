@@ -29,12 +29,7 @@ function Skills() {
           </div>
         ))}
       </div>
-      <button
-        
-        className="btn-primary w-full"
-      >
-        Skills
-      </button>
+      
     </div>
     </motion.div>
   );

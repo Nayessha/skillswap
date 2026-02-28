@@ -31,12 +31,7 @@ function Matches() {
               <p><strong>User:</strong> {match.user?.name}</p>
               <p><strong>Skill:</strong> {match.skill?.title}</p>
 
-            <button
-                
-                className="btn-primary w-full"
-            >
-                Matches
-            </button>
+            
             </div>
           ))}
         </div>

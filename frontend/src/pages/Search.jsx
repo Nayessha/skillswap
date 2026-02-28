@@ -68,12 +68,7 @@ function Search() {
           </p>
         </div>
       ))}
-        <button
-            
-            className="btn-primary w-full"
-        >
-            Find Teachers
-        </button>
+        
     </div>
     </motion.div>
   );

@@ -213,12 +213,7 @@ function Requests() {
           </div>
         ))}
       </div>
-      <button
-        
-        className="btn-primary w-full"
-      >
-        Requests
-      </button>
+      
     </div>
     </motion.div>
   );
