@@ -1,19 +1,7 @@
 import { useState } from "react";
 import { api } from "../api";
-
 import { motion } from "framer-motion";
 
-function AddWantedSkill() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-    >
-      <h1 className="text-3xl font-bold">Dashboard</h1>
-    </motion.div>
-  );
-}
 const categories = [
   "Technical",
   "E-commerce",
@@ -28,7 +16,7 @@ const categories = [
   "Others"
 ];
 
-function AddWantedSkill() {
+export default function AddWantedSkill() {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
 
@@ -50,7 +38,12 @@ function AddWantedSkill() {
   };
 
   return (
-    <div className="flex justify-center items-start">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="flex justify-center items-start"
+    >
       <div className="bg-white rounded-2xl shadow-2xl p-10 w-full max-w-2xl">
 
         <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
@@ -59,7 +52,6 @@ function AddWantedSkill() {
 
         <div className="space-y-6">
 
-          {/* Wanted Skill Title */}
           <div>
             <label className="block text-gray-600 mb-2 font-medium">
               Wanted Skill Title
@@ -75,7 +67,6 @@ function AddWantedSkill() {
             />
           </div>
 
-          {/* Category */}
           <div>
             <label className="block text-gray-600 mb-2 font-medium">
               Category
@@ -96,7 +87,6 @@ function AddWantedSkill() {
             </select>
           </div>
 
-          {/* Button */}
           <button
             onClick={handleAdd}
             className="w-full bg-indigo-600 hover:bg-indigo-700 
@@ -110,7 +100,6 @@ function AddWantedSkill() {
 
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
-export default AddWantedSkill;

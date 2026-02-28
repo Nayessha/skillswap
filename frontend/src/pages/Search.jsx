@@ -2,17 +2,7 @@ import { useState } from "react";
 import { api } from "../api";
 import { motion } from "framer-motion";
 
-function Search() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-    >
-      <h1 className="text-3xl font-bold">Dashboard</h1>
-    </motion.div>
-  );
-}
+
 function Search() {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
@@ -31,6 +21,11 @@ function Search() {
   };
 
   return (
+     <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
     <div className="p-10 bg-gray-100 min-h-screen">
       <h2 className="text-3xl font-bold mb-6 text-gray-800">
         Find Top Teachers
@@ -74,6 +69,7 @@ function Search() {
         </div>
       ))}
     </div>
+    </motion.div>
   );
 }
 export default Search;

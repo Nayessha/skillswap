@@ -3,17 +3,7 @@ import { api } from "../api";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-function Requests() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-    >
-      <h1 className="text-3xl font-bold">Dashboard</h1>
-    </motion.div>
-  );
-}
+
 
 function Requests() {
   const [myRequests, setMyRequests] = useState([]);
@@ -79,6 +69,11 @@ function Requests() {
   };
 
   return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
     <div className="p-10 bg-gray-100 min-h-screen">
       <h2 className="text-3xl font-bold mb-8 text-gray-800">
         Requests
@@ -218,6 +213,7 @@ function Requests() {
         ))}
       </div>
     </div>
+    </motion.div>
   );
 }
 export default Requests;

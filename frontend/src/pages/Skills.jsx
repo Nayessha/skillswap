@@ -2,17 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../api";
 import { motion } from "framer-motion";
 
-function Skills() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-    >
-      <h1 className="text-3xl font-bold">Dashboard</h1>
-    </motion.div>
-  );
-}
+
 function Skills() {
   const [skills, setSkills] = useState([]);
 
@@ -23,6 +13,11 @@ function Skills() {
   }, []);
 
   return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
     <div>
       <h2 className="text-2xl font-bold mb-6">My Skills</h2>
 
@@ -35,6 +30,7 @@ function Skills() {
         ))}
       </div>
     </div>
+    </motion.div>
   );
 }
 export default Skills;
