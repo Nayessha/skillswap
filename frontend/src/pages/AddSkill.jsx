@@ -2,7 +2,7 @@ import { useState } from "react";
 import { api } from "../api";
 import { motion } from "framer-motion";
 
-function Dashboard() {
+function AddSkill() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -113,4 +113,4 @@ function AddSkill() {
     </div>
   );
 }
-export default Dashboard;
+export default AddSkill;

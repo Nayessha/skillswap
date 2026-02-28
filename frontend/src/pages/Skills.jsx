@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../api";
 import { motion } from "framer-motion";
 
-function Dashboard() {
+function Skills() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -37,4 +37,4 @@ function Skills() {
     </div>
   );
 }
-export default Dashboard;
+export default Skills;

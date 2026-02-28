@@ -3,7 +3,7 @@ import { api } from "../api";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-function Dashboard() {
+function Requests() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -220,4 +220,4 @@ function Requests() {
     </div>
   );
 }
-export default Dashboard;
+export default Requests;

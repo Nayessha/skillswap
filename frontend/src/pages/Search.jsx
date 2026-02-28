@@ -2,7 +2,7 @@ import { useState } from "react";
 import { api } from "../api";
 import { motion } from "framer-motion";
 
-export default function Dashboard() {
+function Search() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -13,8 +13,7 @@ export default function Dashboard() {
     </motion.div>
   );
 }
-
-export default function Search() {
+function Search() {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [teachers, setTeachers] = useState([]);
@@ -77,3 +76,4 @@ export default function Search() {
     </div>
   );
 }
+export default Search;
