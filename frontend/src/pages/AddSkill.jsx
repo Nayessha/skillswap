@@ -2,7 +2,7 @@ import { useState } from "react";
 import { api } from "../api";
 import { motion } from "framer-motion";
 
-export default function Dashboard() {
+function Dashboard() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -28,7 +28,7 @@ const categories = [
   "Others"
 ];
 
-export default function AddSkill() {
+function AddSkill() {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
 
@@ -113,3 +113,4 @@ export default function AddSkill() {
     </div>
   );
 }
+export default Dashboard;

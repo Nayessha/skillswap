@@ -3,7 +3,7 @@ import { api } from "../api";
 
 import { motion } from "framer-motion";
 
-export default function Dashboard() {
+function Dashboard() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -15,7 +15,7 @@ export default function Dashboard() {
   );
 }
 
-export default function Dashboard() {
+function Dashboard() {
   const [skills, setSkills] = useState([]);
   const [wanted, setWanted] = useState([]);
 
@@ -52,3 +52,4 @@ export default function Dashboard() {
     </div>
   );
 }
+export default Dashboard;

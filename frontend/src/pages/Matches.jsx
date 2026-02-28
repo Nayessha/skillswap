@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../api";
 import { motion } from "framer-motion";
 
-export default function Dashboard() {
+function Dashboard() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -13,7 +13,7 @@ export default function Dashboard() {
     </motion.div>
   );
 }
-export default function Matches() {
+function Matches() {
   const [matches, setMatches] = useState([]);
 
   useEffect(() => {
@@ -59,3 +59,4 @@ export default function Matches() {
     </div>
   );
 }
+export default Dashboard;

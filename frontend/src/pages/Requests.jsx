@@ -3,7 +3,7 @@ import { api } from "../api";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-export default function Dashboard() {
+function Dashboard() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -15,7 +15,7 @@ export default function Dashboard() {
   );
 }
 
-export default function Requests() {
+function Requests() {
   const [myRequests, setMyRequests] = useState([]);
   const [forMe, setForMe] = useState([]);
 
@@ -220,3 +220,4 @@ export default function Requests() {
     </div>
   );
 }
+export default Dashboard;
