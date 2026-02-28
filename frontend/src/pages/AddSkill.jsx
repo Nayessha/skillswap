@@ -87,16 +87,7 @@ export default function AddSkill() {
             </select>
           </div>
 
-          <button
-            onClick={handleAdd}
-            className="w-full bg-indigo-600 hover:bg-indigo-700 
-                       text-white font-semibold py-3 rounded-xl 
-                       shadow-lg hover:shadow-xl 
-                       transform hover:-translate-y-0.5 
-                       transition duration-200"
-          >
-            Add Skill
-          </button>
+          
           <button className="btn-primary">
                 Add Skill
           </button>
