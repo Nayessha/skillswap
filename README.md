@@ -131,6 +131,7 @@ JWT (JSON Web Tokens)
 
 ### Deployment
 Render
+Vercel
 
 ---
 
