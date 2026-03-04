@@ -1,7 +1,7 @@
 # Synaptex
 
 ## Demo Video
-![Demo Video](screenshots/demo.mp4)
+![Demo](screenshots/demo.gif)
 
 **Synaptex** is a full-stack skill exchange platform that enables people to **teach what they know and learn what they want** by connecting users with complementary skills.
 
