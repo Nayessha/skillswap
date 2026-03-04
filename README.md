@@ -1,5 +1,7 @@
 # Synaptex
 
+## Demo Video
+!(screenshots/video.mp4)
 
 **Synaptex** is a full-stack skill exchange platform that enables people to **teach what they know and learn what they want** by connecting users with complementary skills.
 
@@ -81,7 +83,7 @@ Frontend and backend are deployed and accessible through a public URL.
 # Screenshots
 
 ## Login
-![Dashboard](screenshots/login.png)
+![Login](screenshots/login.png)
 
 ## Dashboard
 ![Dashboard](screenshots/dashboard.png)
@@ -96,13 +98,13 @@ Frontend and backend are deployed and accessible through a public URL.
 ![Requests](screenshots/requests.png)
 
 ## My skills
-![Dashboard](screenshots/myskills.png)
+![My skills](screenshots/myskills.png)
 
 ## Add Wanted Sills
-![Dashboard](screenshots/wantedskill.png)
+![Add wanted skills](screenshots/wantedskill.png)
 
 ## Find Top Teachers
-![Dashboard](screenshots/findteachers.png)
+![Find top teachers](screenshots/findteachers.png)
 
 
 ---
