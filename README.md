@@ -87,7 +87,7 @@ Frontend and backend are deployed and accessible through a public URL.
 ![Dashboard](screenshots/dashboard.png)
 
 ## Add Skill
-![Add Skill](screenshots/add-skill.png)
+![Add Skill](screenshots/addskill.png)
 
 ## Matches
 ![Matches](screenshots/matches.png)
